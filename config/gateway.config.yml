@@ -1,5 +1,5 @@
 http:
-  port: 8080
+  port: 443
 apiEndpoints:
   magic:
     host: micro-gate-production.up.railway.app
