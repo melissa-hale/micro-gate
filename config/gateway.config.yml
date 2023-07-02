@@ -1,0 +1,40 @@
+http:
+  port: 8080
+apiEndpoints:
+  magic:
+    host: localhost
+    paths: '/'
+  express:
+    host: localhost
+    paths: '/expressApi/v1/*'
+serviceEndpoints:
+  magicService:
+    url: 'https://magicservice-production.up.railway.app/'
+  expressService:
+    url: 'https://express-server-production-bafc.up.railway.app/'
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+pipelines:
+  magicPipeline:
+    apiEndpoints:
+      - magic
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: magicService 
+              changeOrigin: true
+  expressPipeline:
+    apiEndpoints:
+      - express
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: expressService 
+              changeOrigin: true
