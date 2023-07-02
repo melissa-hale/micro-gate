@@ -9,9 +9,9 @@ apiEndpoints:
     paths: '/expressApi/v1/*'
 serviceEndpoints:
   magicService:
-    url: 'https://magicservice-production.up.railway.app/'
+    url: 'https://magicservice-production.up.railway.app'
   expressService:
-    url: 'https://express-server-production-bafc.up.railway.app'
+    url: 'https://express-server-production-bafc.up.railway.app/'
 policies:
   - basic-auth
   - cors
@@ -38,3 +38,6 @@ pipelines:
           - action:
               serviceEndpoint: expressService 
               changeOrigin: true
+              ignorePath: false
+              prependPath: true
+              stripPath: true
