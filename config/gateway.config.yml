@@ -2,10 +2,10 @@ http:
   port: 8080
 apiEndpoints:
   magic:
-    host: micro-gate-production.up.railway.app/
+    host: micro-gate-production.up.railway.app
     paths: '/'
   express:
-    host: micro-gate-production.up.railway.app/
+    host: micro-gate-production.up.railway.app
     paths: '/expressApi/v1/*'
 serviceEndpoints:
   magicService:
