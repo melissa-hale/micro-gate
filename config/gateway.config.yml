@@ -1,11 +1,11 @@
 http:
-  port: 443
+  port: ${PORT}
 apiEndpoints:
   magic:
-    host: micro-gate-production.up.railway.app
+    host: 0.0.0.0
     paths: '/'
   express:
-    host: micro-gate-production.up.railway.app
+    host: 0.0.0.0
     paths: '/expressApi/v1/*'
 serviceEndpoints:
   magicService:

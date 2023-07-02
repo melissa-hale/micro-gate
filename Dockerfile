@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Expose the port that Express Gateway will listen on (adjust if necessary)
-EXPOSE 443
+EXPOSE ${PORT}
 
 # Start Express Gateway when the container starts
 CMD ["npm", "run", "start"]

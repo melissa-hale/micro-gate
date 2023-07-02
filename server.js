@@ -3,4 +3,6 @@ const gateway = require('express-gateway');
 
 gateway()
   .load(path.join(__dirname, 'config'))
-  .run();
+  .run({
+    host: '0.0.0.0'
+  });
