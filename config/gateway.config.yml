@@ -38,6 +38,7 @@ pipelines:
           - action:
               serviceEndpoint: expressService 
               changeOrigin: true
-              ignorePath: false
-              prependPath: true
-              stripPath: true
+      - log:
+        - action:
+            message: ${req.method} ${req.originalUrl}
+
