@@ -11,7 +11,7 @@ serviceEndpoints:
   magicService:
     url: 'https://magicservice-production.up.railway.app/'
   expressService:
-    url: 'http://express-server.railway.internal'
+    url: 'https://express-server-production-bafc.up.railway.app'
 policies:
   - basic-auth
   - cors
