@@ -7,7 +7,8 @@ const logger = morgan('combined', { stream: process.stdout });
 gateway()
   .load(path.join(__dirname, 'config'))
   .run({
-    host: '0.0.0.0',
+    host: '::',
+    port: process.env.PORT,
     pre: (app) => {
       app.use(logger);
     }
