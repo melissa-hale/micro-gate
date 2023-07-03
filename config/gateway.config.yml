@@ -1,4 +1,4 @@
-http:
+https:
   port: ${PORT}
 apiEndpoints:
   express:
