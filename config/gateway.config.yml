@@ -1,19 +1,25 @@
 http:
   port: ${PORT}
+https:
+  port: ${PORT}
 apiEndpoints:
   express:
-    host: 0.0.0.0
+    host: "*"
     paths: '/expressApi/v1/*'
 serviceEndpoints:
   expressService:
-    url: 'http://express-server.railway.internal:7083'
+    url: 'https://express-server-production-bafc.up.railway.app'
 policies:
   - proxy
+  - log
 pipelines:
   expressPipeline:
     apiEndpoints:
       - express
     policies:
+      - log:
+        - action:
+            message: "LOG ${req.method} ${req.originalUrl} ${req.url} ${req.ip} ${req.protocol} ${res.statusCode}"
       - proxy:
           - action:
               serviceEndpoint: expressService 
