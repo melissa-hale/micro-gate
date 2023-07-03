@@ -1,7 +1,5 @@
 http:
   port: ${PORT}
-https:
-  port: ${PORT}
 apiEndpoints:
   express:
     host: "*"
