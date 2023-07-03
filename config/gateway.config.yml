@@ -6,7 +6,7 @@ apiEndpoints:
     paths: '/expressApi/v1/*'
 serviceEndpoints:
   expressService:
-    url: 'http://express-server.railway.internal'
+    url: 'http://express-server.railway.internal:7083'
 policies:
   - proxy
   - log
