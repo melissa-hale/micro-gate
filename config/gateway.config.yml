@@ -1,17 +1,12 @@
 http:
   port: ${PORT}
 apiEndpoints:
-  magic:
-    host: 0.0.0.0
-    paths: '/'
   express:
     host: 0.0.0.0
     paths: '/expressApi/v1/*'
 serviceEndpoints:
-  magicService:
-    url: 'https://magicservice-production.up.railway.app'
   expressService:
-    url: 'http://express-server.railway.internal'
+    url: 'http://express-server.railway.internal:7083'
 policies:
   - basic-auth
   - cors
@@ -22,14 +17,6 @@ policies:
   - proxy
   - rate-limit
 pipelines:
-  magicPipeline:
-    apiEndpoints:
-      - magic
-    policies:
-      - proxy:
-          - action:
-              serviceEndpoint: magicService 
-              changeOrigin: true
   expressPipeline:
     apiEndpoints:
       - express
