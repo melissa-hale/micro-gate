@@ -24,8 +24,4 @@ pipelines:
       - proxy:
           - action:
               serviceEndpoint: expressService 
-              changeOrigin: true
-      - log:
-        - action:
-            message: ${req.method} ${req.originalUrl}
 
