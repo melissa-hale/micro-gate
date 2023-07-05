@@ -4,9 +4,14 @@ apiEndpoints:
   express:
     host: "*"
     paths: '/expressApi/v1/*'
+  flask:
+    host: "*"
+    paths: '/flaskAPI/v1/*'
 serviceEndpoints:
   expressService:
     url: 'https://express-server-production-bafc.up.railway.app'
+  flaskService:
+    url: 'https://property-service-production.up.railway.app'
 policies:
   - proxy
   - log
@@ -21,4 +26,14 @@ pipelines:
       - proxy:
           - action:
               serviceEndpoint: expressService 
+  flaskPipeline:
+    apiEndpoints:
+      - flask
+    policies:
+      - log:
+        - action:
+            message: "LOG ${req.method} ${req.originalUrl} ${req.url} ${req.ip} ${req.protocol} ${res.statusCode}"
+      - proxy:
+          - action:
+              serviceEndpoint: flaskService 
 
