@@ -22,7 +22,7 @@ pipelines:
     policies:
       - log:
         - action:
-            message: "LOG ${req.method} ${req.originalUrl} ${req.url} ${req.ip} ${req.protocol} ${res.statusCode}"
+            message: "LOG ${req.method} ${req.originalUrl} ${req.url} ${req.ip} ${res.statusCode}"
       - proxy:
           - action:
               serviceEndpoint: expressService 
