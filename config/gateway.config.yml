@@ -7,11 +7,16 @@ apiEndpoints:
   flask:
     host: "*"
     paths: '/flaskAPI/v1/*'
+  reporting:
+    host: "*"
+    paths: '/reporting-service/v1/*'
 serviceEndpoints:
   expressService:
     url: 'https://express-server-production-bafc.up.railway.app'
   flaskService:
     url: 'https://property-service-production.up.railway.app'
+  reportingService:
+    url: 'https://reporting-service-production.up.railway.app'
 policies:
   - proxy
   - log
@@ -22,7 +27,7 @@ pipelines:
     policies:
       - log:
         - action:
-            message: "LOG ${req.method} ${req.originalUrl} ${req.url} ${req.ip} ${req.protocol} ${res.statusCode}"
+            message: "LOG ${req.method} ${req.originalUrl} ${req.url} ${req.ip} ${res.statusCode}"
       - proxy:
           - action:
               serviceEndpoint: expressService 
@@ -36,4 +41,14 @@ pipelines:
       - proxy:
           - action:
               serviceEndpoint: flaskService 
+  reportingPipeline:
+    apiEndpoints:
+      - reporting
+    policies:
+      - log:
+        - action:
+            message: "LOG ${req.method} ${req.originalUrl} ${req.url} ${req.ip} ${req.protocol} ${res.statusCode}"
+      - proxy:
+          - action:
+              serviceEndpoint: reportingService 
 
